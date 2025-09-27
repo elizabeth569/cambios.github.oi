@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Soluciones</title>
+    <link rel="stylesheet" href="dise.css" />
+  </head>
+  <body>
+    <!-- lo que me ayuda a crear el fondo -->
+    <canvas id="canvas"></canvas>
+
+    <nav class="navbar">
+      <ul>
+        <li>
+          <button class="btn-nav">
+            <a href="index.html" class="a">Inicio</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="contenedor">
+      <article class="articulo">
+        <h2>Soluciones al Cambio Climático 🌍💡</h2>
+        <p>
+          <strong>1. Uso de energías renovables</strong><br />
+          Sustituir combustibles fósiles por solar, eólica, hidráulica o
+          geotérmica.<br />
+          Reduce la emisión de CO₂ y otros gases de efecto invernadero.<br /><br />
+
+          <strong>2. Reforestación y conservación de bosques</strong><br />
+          Plantar árboles y proteger áreas verdes.<br />
+          Los árboles absorben CO₂, mejoran la calidad del aire y mantienen la
+          biodiversidad.<br /><br />
+
+          <strong>3. Agricultura sostenible</strong><br />
+          Implementar técnicas como rotación de cultivos, agroforestería y
+          agricultura orgánica.<br />
+          Reduce emisiones de metano y óxido nitroso, y protege el suelo.<br /><br />
+
+          <strong>4. Eficiencia energética</strong><br />
+          Usar electrodomésticos y sistemas de iluminación de bajo consumo.<br />
+          Mejorar el aislamiento en edificios y promover transporte
+          eficiente.<br />
+          Menor consumo de energía significa menos emisiones.<br /><br />
+
+          <strong>5. Reducción del transporte contaminante</strong><br />
+          Fomentar transporte público, bicicletas y vehículos eléctricos.<br />
+          Disminuye CO₂ y contaminación urbana.<br /><br />
+
+          <strong>6. Gestión adecuada de residuos</strong><br />
+          Reciclar, reutilizar y compostar.<br />
+          Evita que la basura genere metano y contamine suelos y agua.<br /><br />
+
+          <strong>7. Educación y concienciación ambiental</strong><br />
+          Informar sobre el cambio climático y promover hábitos sostenibles.<br />
+          Impulsa decisiones responsables a nivel personal, comunitario y
+          político.<br /><br />
+
+          <strong>8. Políticas y acuerdos internacionales</strong><br />
+          Aplicar regulaciones sobre emisiones industriales y forestales.<br />
+          Cumplir compromisos de acuerdos como el Acuerdo de París.<br />
+          Incentivar energías limpias y proteger ecosistemas críticos.<br /><br />
+
+          <strong>9. Innovación tecnológica y científica</strong><br />
+          Desarrollar tecnologías de captura de CO₂ y eficiencia energética.<br />
+          Mejorar pronósticos climáticos y estrategias de adaptación.<br /><br />
+
+          <strong>10. Adaptación a los cambios inevitables</strong><br />
+          Construir infraestructura resistente a fenómenos extremos
+          (inundaciones, huracanes).<br />
+          Gestionar recursos hídricos y agrícolas según nuevos patrones
+          climáticos.<br />
+          Planificación urbana y manejo de riesgos para proteger comunidades
+          vulnerables.<br /><br />
+        </p>
+
+        <img
+          src="imagen/d.jpeg"
+          alt="Soluciones climáticas"
+          class="contenedor"
+        />
+      </article>
+
+      <aside class="programada">
+        <h3>Título</h3>
+        <p>Anuncio</p>
+        <img src="imagen/1.jpeg" alt="Publicidad" class="propaganda" />
+      </aside>
+    </div>
+
+    <footer class="pie">Miércoles 17 de septiembre del 2025</footer>
+
+    <!-- Script de partículas y temas -->
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 4 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+          this.color = Math.random() > 0.5 ? "#4CAF50" : "#2196F3";
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        particles = [];
+        for (let i = 0; i < 150; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+    </script>
+  </body>
+</html>

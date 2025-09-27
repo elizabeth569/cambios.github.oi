@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consecuencias del Cambio Climático 🌡️🌪️🌊</title>
+    <link rel="stylesheet" href="dise.css" />
+  </head>
+  <body>
+    <!-- lo que me ayuda a crear el fondo -->
+    <canvas id="canvas"></canvas>
+
+    <nav class="navbar">
+      <h1 class="logo">🌍 Consecuencias del cambio Climático</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+      </ul>
+    </nav>
+
+    <div class="contenedor">
+      <article class="articulo">
+        <h2>Consecuencias del Cambio Climático 🌡️🌪️🌊</h2>
+        <p>
+          <strong>1. Aumento de las temperaturas globales</strong><br />
+          Olas de calor más intensas y frecuentes.<br />
+          Mayor riesgo de incendios forestales.<br />
+          Afecta la salud humana (golpes de calor, deshidratación).<br /><br />
+
+          <strong>2. Alteraciones en los ecosistemas y la biodiversidad</strong
+          ><br />
+          Extinción de especies que no se adaptan a los cambios.<br />
+          Migración forzada de animales y plantas a otras zonas.<br />
+          Pérdida de bosques, arrecifes de coral y hábitats naturales.<br /><br />
+
+          <strong>3. Derretimiento de glaciares y casquetes polares</strong
+          ><br />
+          Reducción de fuentes de agua dulce.<br />
+          Pérdida de hábitats en regiones frías.<br />
+          Contribuye al aumento del nivel del mar.<br /><br />
+
+          <strong>4. Aumento del nivel del mar</strong><br />
+          Inundación de zonas costeras y ciudades.<br />
+          Desplazamiento de comunidades humanas.<br />
+          Riesgo para islas pequeñas y deltas (como Bangladesh o Maldivas).<br /><br />
+
+          <strong>5. Fenómenos meteorológicos extremos</strong><br />
+          Huracanes y tormentas más potentes.<br />
+          Sequías prolongadas en unas zonas.<br />
+          Lluvias torrenciales e inundaciones en otras.<br /><br />
+
+          <strong>6. Cambios en las precipitaciones</strong><br />
+          Escasez de agua en regiones áridas.<br />
+          Problemas en la producción agrícola (menos cosechas o pérdidas
+          masivas).<br />
+          Riesgo de hambrunas y crisis alimentarias.<br /><br />
+
+          <strong>7. Problemas de salud humana</strong><br />
+          Aumento de enfermedades respiratorias por la contaminación.<br />
+          Expansión de enfermedades transmitidas por insectos (como dengue,
+          malaria o zika).<br />
+          Estrés térmico y desnutrición en poblaciones vulnerables.<br /><br />
+
+          <strong>8. Impactos en la economía</strong><br />
+          Pérdidas millonarias en agricultura, pesca y turismo.<br />
+          Daños en infraestructuras por tormentas e inundaciones.<br />
+          Costos elevados en reconstrucción y medidas de adaptación.<br /><br />
+
+          <strong>9. Migraciones y conflictos sociales</strong><br />
+          Desplazamientos masivos de personas (“refugiados climáticos”).<br />
+          Disputas por recursos naturales como agua y alimentos.<br />
+          Riesgo de conflictos políticos y sociales en zonas vulnerables.<br /><br />
+
+          <strong>10. Retroalimentación del cambio climático</strong><br />
+          El deshielo reduce el reflejo de la luz solar (menos albedo),
+          acelerando el calentamiento.<br />
+          Suelos congelados (permafrost) liberan metano, un gas más potente que
+          el CO₂.<br />
+          Se crean ciclos que hacen que el cambio climático avance más
+          rápido.<br />
+        </p>
+        <div class="imagen">
+          <img src="imagen/d.jpeg" alt="Impacto climático" />
+        </div>
+      </article>
+
+      <aside class="programada">
+        <h3>Tipo de anuncio</h3>
+        <p>anuncio</p>
+        <img src="imagen/1.jpeg" alt="Propaganda" class="propaganda" />
+      </aside>
+    </div>
+
+    <footer class="pie">Miércoles 17 de septiembre del 2025</footer>
+
+    <!-- anima -->
+    <div class="particles"></div>
+    <script src="script.js"></script>
+
+    <!-- Script de partículas y temas -->
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 4 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+          this.color = Math.random() > 0.5 ? "#4CAF50" : "#2196F3";
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        particles = [];
+        for (let i = 0; i < 150; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+    </script>
+  </body>
+</html>
